@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "927592659019",
+    "project_id": "chopnow-vendor",
+    "storage_bucket": "chopnow-vendor.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:927592659019:android:822d7cf0cda67f5fbfb5ce",
+        "android_client_info": {
+          "package_name": "com.example.vendor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOlg2ZHCKE5w1TQ7qBwrG7kF8zjjKcMZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

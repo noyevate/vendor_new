@@ -1,0 +1,152 @@
+import 'package:vendor/common/color_extension.dart';
+import 'package:vendor/common/reusable_text_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:heroicons_flutter/heroicons_flutter.dart';
+
+class MenuPricing extends StatelessWidget {
+  const MenuPricing({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width, // Adapts to screen width
+      height: 1400.h,
+      padding: EdgeInsets.only(left: 20.w, right: 20.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Header / Close Button Row
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const SizedBox.shrink(), // Pushes the button to the right
+              Container(
+                height: 70.h,
+                width: 70.w,
+                decoration: BoxDecoration(
+                  color: Tcolor.BACKGROUND_Dark,
+                  borderRadius: BorderRadius.circular(60.r),
+                ),
+                child: Center(
+                  child: IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: Icon(
+                      HeroiconsOutline.xMark,
+                      color: Tcolor.Text,
+                      size: 32.sp,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          // Content wrapped in Expanded so it never overflows
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 40.h),
+                  ReuseableText(
+                    title: "Menu & Pricing",
+                    style: TextStyle(
+                        fontSize: 40.sp,
+                        fontWeight: FontWeight.w700,
+                        color: Tcolor.Text),
+                  ),
+                  SizedBox(height: 20.h),
+
+                  // Using native Text here so it wraps naturally
+                  Text(
+                    "A great menu attracts more customers. Here is how to add your food, set the right prices, and manage your stock:",
+                    style: TextStyle(
+                      fontSize: 28.sp,
+                      fontWeight: FontWeight.w400,
+                      color: Tcolor.TEXT_Body,
+                    ),
+                  ),
+                  SizedBox(height: 40.h),
+
+                  // Step 1
+                  _buildListItem("1.", "Add a New Meal",
+                      "Navigate to the 'Menu' tab and tap to add a new item. Upload a clear, high-quality photo of the food and write a delicious description."),
+
+                  // Step 2
+                  _buildListItem("2.", "Set Base Prices",
+                      "Enter the base price for the meal. Keep in mind the cost of packaging materials and the platform commission when setting your final price."),
+
+                  // Step 3
+                  _buildListItem("3.", "Create Add-ons & Extras",
+                      "Give customers choices! Add extra proteins, sides, or drinks as customizable options, and assign an individual price to each add-on."),
+
+                  // Step 4
+                  _buildListItem("4.", "Manage Availability",
+                      "If an ingredient runs out, don't wait! Quickly toggle the item to 'Out of Stock' in your app so customers don't order food you cannot prepare."),
+
+                  // Step 5
+                  _buildListItem("5.", "Review & Adjust",
+                      "Regularly review your menu. You can easily edit prices at any time to match the changing cost of ingredients in the market."),
+
+                  SizedBox(height: 60.h), // Bottom padding
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  // Helper widget to keep the design consistent and prevent text overflow
+  Widget _buildListItem(String number, String title, String description) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 35.h),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ReuseableText(
+            title: number,
+            style: TextStyle(
+              fontSize: 30.sp,
+              fontWeight: FontWeight.w700,
+              color: Tcolor.PRIMARY_Button_color_2,
+            ),
+          ),
+          SizedBox(width: 15.w),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Bold Title
+                ReuseableText(
+                  title: title,
+                  style: TextStyle(
+                    fontSize: 28.sp,
+                    fontWeight: FontWeight.w600,
+                    color: Tcolor.Text,
+                  ),
+                ),
+                SizedBox(height: 8.h),
+                // Native Text for the description so it naturally drops to the next line
+                Text(
+                  description,
+                  style: TextStyle(
+                    fontSize: 26.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Tcolor.TEXT_Body,
+                  ),
+                  softWrap: true,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
